@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+  <lightning:omniToolkitAPI aura:id="omniToolkit" />
+  <aura:attribute
+    name="options"
+    type="List"
+    default="[
+    {'label': 'Available for Voice', 'value': '0N5DE00000009bT'},
+    {'label': 'Busy', 'value': '0N5DE00000009cF'},
+    {'label': 'Lunch', 'value': '0N5DE00000009c5'},
+    {'label': 'Online', 'value': '0N5DE00000009aF'},
+    ]"
+  />
+  <aura:attribute name="sfStatus" type="String" default="0N5DE00000009bT" />
+
+  <lightning:combobox
+    name="sfStatus"
+    label="Status"
+    value="{! v.sfStatus }"
+    placeholder="Select a Status"
+    options="{! v.options }"
+    onchange="{! c.handleChange }"
+  />
+  <br />
+  <lightning:button label="Set Status" onclick="{! c.setStatus }" />
+</aura:component>

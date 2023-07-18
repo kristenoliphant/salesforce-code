@@ -1,0 +1,22 @@
+<template>
+  <lightning-service-cloud-voice-toolkit-api></lightning-service-cloud-voice-toolkit-api>
+  <div class="slds-m-around_small">
+    <div class="slds-text-heading_medium">Toolkit Events</div>
+    <div>
+      <div class="slds-text-title slds-m-top_small">Latest Event</div>
+      <div class="slds-m-bottom_medium">
+        <lightning-formatted-text value={eventType}></lightning-formatted-text>
+      </div>
+      <div class="slds-p-bottom_medium">
+        <lightning-input class="slds-m-bottom_x-small" type="text" label="Call Id" value={callId} onchange={handleCallIdChange}></lightning-input>
+        <lightning-button class="slds-m-bottom_medium" label="Get Conversation Detail" onclick={getConversationDetail}></lightning-button>
+        <lightning-textarea label="Conversation Detail" readonly value={conversationDetail}></lightning-textarea>
+        <lightning-button class="slds-m-top_small" label="Clear Conversation Detail" onclick={clearConversationDetail}></lightning-button>
+      </div>
+      <div>
+        <lightning-textarea class="slds-m-bottom_x-small" label="Events:" readonly value={events}></lightning-textarea>
+        <lightning-button label="Clear Events" onclick={clearEvents}></lightning-button>
+      </div>
+    </div>
+  </div>
+</template>

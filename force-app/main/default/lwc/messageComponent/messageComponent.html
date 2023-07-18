@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <lightning-card title="Lightning Message Channels" icon-name="utility:connected_apps">
+      <div class="slds-m-around_small lgc-bg">
+        <lightning-combobox
+          name="channels"
+          label="Channel"
+          value={selectedChannel}
+          placeholder="Select Channel"
+          options={channels}
+          onchange={handleChannelChange}
+        ></lightning-combobox>
+      </div>
+      <div class="slds-m-around_small lgc-bg">
+        <lightning-input type="text" label="Message:" value={messageToSend} onchange={handleChange}></lightning-input>
+        <div class="slds-m-around_small"></div>
+        <lightning-button label="Send Message" onclick={publishMessage}></lightning-button>
+        <lightning-button if:true={isSCVChannelSelected} label="Show Toast" onclick={showToast}></lightning-button>
+        <lightning-button if:true={isInternalChannelSelected} label="Request Session" onclick={requestInternalSession}></lightning-button>
+      </div>
+
+      <div class="slds-m-around_small lgc-bg" if:true={isSCVChannelSelected}>
+        <lightning-textarea label="Received SCV Message:" readonly value={receivedSCVMessage}></lightning-textarea>
+      </div>
+      <div class="slds-m-around_small lgc-bg" if:true={isInternalChannelSelected}>
+        <lightning-textarea label="Received Internal Message:" readonly value={receivedInternalMessage}></lightning-textarea>
+      </div>
+      <div class="slds-m-around_small lgc-bg" if:true={isSCVPublicChannelSelected}>
+        <lightning-textarea label="Received SCV Public Message:" readonly value={receivedSCVPublicMessage}></lightning-textarea>
+      </div>
+      <div class="slds-m-around_small lgc-bg">
+        <lightning-button label="Clear Messages" onclick={clearMessages}></lightning-button>
+        <lightning-button label="Clear All Message" onclick={clearAllMessages}></lightning-button>
+      </div>
+    </lightning-card>
+  </div>
+</template>
